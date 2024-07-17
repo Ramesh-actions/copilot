@@ -11,5 +11,16 @@ jobs:
 
       - name: Run my composite action
         uses: ./.github/actions/my-composite-action
+        # with:
+        #   my-input: 'some input value'
+        env:
+          GH_NAME: ${{ secrets.GH_NAME }}
+          GH_ADMIN_TOKEN: ${{ secrets.REPORTS_PAT }}
+
+      - name: Github Copilot report
+        uses: actions/upload-artifact@v2
         with:
-          my-input: 'some input value'
+          name: Copilot_Users${{ steps.date.outputs.date }}
+          path: |
+           ${{ github.workspace }}/*.csv
+           ${{ github.workspace }}/*.log
