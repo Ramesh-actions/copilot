@@ -18,5 +18,6 @@ runs:
     - name: Run a Python script
       run: |
         echo "Running my Python script"
+        pip install requests
         python copilot.py
       shell: bash
